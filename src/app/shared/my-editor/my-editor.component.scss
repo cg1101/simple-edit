@@ -1,0 +1,72 @@
+$editor-border: lightgray thin solid;
+$editor-border-radius: 4px;
+$editor-header-language-picker-flex: 0 0 10em;
+$editor-header-attribute-picker-flex: 0 0 4em;
+$editor-header-clear-all-flex: 1 0 15em;
+$editor-body-padding: 1em;
+$editor-light-color: lightgray;
+
+:host {
+  display: block;
+  border: $editor-border;
+  border-radius: $editor-border-radius;
+
+  .header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: space-between;
+
+    > * {
+      flex: 0 0 auto;
+      height: 2em;
+      padding: 0.5em;
+      &:not(:first-child) {
+        border-left: $editor-border;
+      }
+    }
+
+    .language-picker {
+      flex: $editor-header-language-picker-flex;
+    }
+
+    .attribute-picker {
+      flex: $editor-header-attribute-picker-flex;
+    }
+
+    .clear-all {
+      flex: $editor-header-clear-all-flex;
+      text-align: right;
+      color: $editor-light-color;
+    }
+  }
+  .body {
+    border-top: $editor-border;
+    padding: $editor-body-padding;
+    position: relative;
+    min-height: 5em;
+
+    .editor {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: $editor-body-padding;
+    }
+
+    .placeholder {
+      color: $editor-light-color;
+    }
+
+    .editor:focus + .placeholder {
+      visibility: hidden;
+    }
+
+    .counter {
+      position: absolute;
+      right: 1em;
+      bottom: 1em;
+    }
+  }
+}
