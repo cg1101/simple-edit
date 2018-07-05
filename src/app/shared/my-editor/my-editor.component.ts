@@ -11,23 +11,42 @@ import { EditData } from '../simple-edit.directive';
 export class MyEditorComponent implements OnInit {
 
   @Input()
-  advancedMode: boolean;
+  enableAdvancedMode? = false;
+
+  private _advancedMode = false;
+  get advancedMode() {
+    return this._advancedMode;
+  }
+  set advancedMode(isAdvancedMode) {
+    this._advancedMode = isAdvancedMode;
+  }
+
+
+  get editData(): EditData {
+    return this._editData;
+  }
+  set editData(data: EditData) {
+    this._editData$.next(this._editData = data);
+  }
 
   readonly maxLength = 140;
   readonly placeholderText = 'Enter ad copy here...';
 
   characterCount$: Observable<number>;
 
-  private _editData$ = new BehaviorSubject<EditData>(<EditData>{
+  private _editData: EditData = {
     html: '',
     text: '',
     count: 0
-  });
+  };
+  private _editData$ = new BehaviorSubject<EditData>(this._editData);
 
   constructor() {
     this.characterCount$ = this._editData$.pipe(
       map(d => d.count)
     );
+
+
   }
 
   ngOnInit() {

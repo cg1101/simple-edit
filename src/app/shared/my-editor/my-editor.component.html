@@ -1,22 +1,31 @@
-<div class="header" *ngIf="advancedMode">
-  <span>Text</span>
-  <span>HTML</span>
+<div class="header" *ngIf="enableAdvancedMode">
+  <span [ngClass]="advancedMode ? '' : 'active'" (click)="advancedMode = false">Text</span>
+  <span [ngClass]="advancedMode ? 'active' : ''" (click)="advancedMode = true">HTML</span>
 </div>
 <div class="main">
-  <div class="toolbar">
-    <div class="dropdown language-picker">
-      <span class="">{{language$ | async}}<i class="op2-icon-down"></i></span>
+  <div class="main-a" *ngIf="!advancedMode">
+    <div class="toolbar">
+      <div class="dropdown language-picker">
+        <span class="">{{language$ | async}}<i class="op2-icon-down"></i></span>
+      </div>
+      <div class="dropdown attribute-picker">
+        <span class=""><i class="op2-icon-down"></i></span>
+      </div>
+      <a class="clear-all" (click)="clear()">Clear All Text</a>
     </div>
-    <div class="dropdown attribute-picker">
-      <span class=""><i class="op2-icon-down"></i></span>
+    <div class="body">
+      <div class="wrapper">
+        <div class="editor" #editor appSimpleEdit (change)="dataChanged($event)"></div>
+      </div>
+      <span class="placeholder">{{placeholderText}}</span>
+      <div class="counter" [ngClass]="(characterCount$ | async) > maxLength ? 'danger' : ''">
+        {{characterCount$ | async}} / {{maxLength}}
+      </div>
     </div>
-    <a class="clear-all" (click)="clear()">Clear All Text</a>
   </div>
-  <div class="body">
-    <div class="editor" #editor appSimpleEdit (change)="dataChanged($event)"></div>
-    <span class="placeholder">{{placeholderText}}</span>
-    <div class="counter" [ngClass]="(characterCount$ | async) > maxLength ? 'danger' : ''">
-      {{characterCount$ | async}} / {{maxLength}}
-    </div>
+  <div class="main-a" *ngIf="advancedMode">
+      <pre contenteditable="true">
+{{(_editData$| async).html}}
+      </pre>
   </div>
 </div>

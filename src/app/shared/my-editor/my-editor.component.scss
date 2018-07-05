@@ -17,12 +17,18 @@ $editor-light-color: lightgray;
     align-items: stretch;
     justify-content: flex-end;
 
+    .active {
+      color: blue;
+    }
+
     > * {
       flex: 0 0 5em;
       background-color: $c-white;
       padding: 0.5em;
       border: $editor-border;
       text-align: center;
+      margin-left: -1px;
+      margin-bottom: -1px;
     }
   }
 
@@ -30,70 +36,100 @@ $editor-light-color: lightgray;
     border: $editor-border;
     border-radius: $editor-border-radius;
     background-color: $c-white;
-  }
-
-  .toolbar {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: stretch;
-    justify-content: space-between;
-
-    > * {
-      flex: 0 0 auto;
-      height: 2em;
-      padding: 0.5em;
-      &:not(:first-child) {
-        border-left: $editor-border;
-      }
-    }
-
-    .language-picker {
-      flex: $editor-header-language-picker-flex;
-      i.op2-* {
-        float: right;
-      }
-    }
-
-    .attribute-picker {
-      flex: $editor-header-attribute-picker-flex;
-    }
-
-    .clear-all {
-      flex: $editor-header-clear-all-flex;
-      text-align: right;
-      color: $editor-light-color;
-    }
-  }
-  .body {
-    border-top: $editor-border;
-    padding: $editor-body-padding;
+    min-height: 15em;
     position: relative;
-    min-height: 5em;
 
-    .editor {
+    .main-a {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: stretch;
+      justify-content: space-between;
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
       height: 100%;
-      padding: $editor-body-padding;
-    }
+      width: 100%;
 
-    .placeholder {
-      color: $editor-light-color;
-    }
+      .toolbar {
+        flex: 0 0 2em;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: stretch;
+        justify-content: space-between;
 
-    .editor:focus + .placeholder {
-      visibility: hidden;
-    }
+        > * {
+          flex: 0 0 auto;
+          height: 2em;
+          padding: 0.5em;
+          &:not(:first-child) {
+            border-left: $editor-border;
+          }
+        }
 
-    .counter {
-      position: absolute;
-      right: 1em;
-      bottom: 1em;
+        .language-picker {
+          flex: $editor-header-language-picker-flex;
+          i.op2-* {
+            float: right;
+          }
+        }
 
-      &.danger {
-        color: red;
+        .attribute-picker {
+          flex: $editor-header-attribute-picker-flex;
+        }
+
+        .clear-all {
+          flex: $editor-header-clear-all-flex;
+          text-align: right;
+          color: $editor-light-color;
+        }
+      }
+
+      .body {
+        flex: 10 0 3em;
+        border-top: $editor-border;
+        padding: $editor-body-padding;
+        position: relative;
+
+        .wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+
+        }
+
+        .editor {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          padding: $editor-body-padding;
+        }
+
+        .placeholder {
+          color: $editor-light-color;
+        }
+
+        .editor:focus + .placeholder {
+          visibility: hidden;
+        }
+
+        .counter {
+          position: absolute;
+          right: 1em;
+          bottom: 1em;
+
+          &.danger {
+            color: red;
+          }
+        }
+      }
+
+      pre {
+        flex: 1 0 5em;
+        padding: 1em;
+        overflow: auto;
+        white-space: pre-wrap;
       }
     }
   }

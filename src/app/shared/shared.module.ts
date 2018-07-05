@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 
 import { MyTestComponent } from './my-test/my-test.component';
@@ -9,6 +10,7 @@ import { SimpleEditDirective } from './simple-edit.directive';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     EditorModule,
   ],
   declarations: [
@@ -17,6 +19,7 @@ import { SimpleEditDirective } from './simple-edit.directive';
     SimpleEditDirective,
   ],
   exports: [
+    FormsModule,
     MyTestComponent,
     MyEditorComponent,
     SimpleEditDirective,
