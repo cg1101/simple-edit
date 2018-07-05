@@ -1,12 +1,12 @@
-<div class="header">
+<div class="toolbar">
   <span class="language-picker">{{language$ | async}}<i class="op2-icon-down"></i></span>
   <span class="attribute-picker"><i class="op2-icon-down"></i></span>
-  <span class="clear-all">Clear All Text</span>
+  <a class="clear-all" (click)="clear()">Clear All Text</a>
 </div>
 <div class="body">
-  <div class="editor" #editor appSimpleEdit></div>
+  <div class="editor" #editor appSimpleEdit (change)="dataChanged($event)"></div>
   <span class="placeholder">{{placeholderText}}</span>
-  <div class="counter">
+  <div class="counter" [ngClass]="(characterCount$ | async) > maxLength ? 'danger' : ''">
     {{characterCount$ | async}} / {{maxLength}}
   </div>
 </div>

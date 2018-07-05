@@ -12,6 +12,10 @@ $editor-light-color: lightgray;
   border-radius: $editor-border-radius;
 
   .header {
+
+  }
+
+  .toolbar {
     display: flex;
     flex-flow: row nowrap;
     align-items: stretch;
@@ -67,6 +71,10 @@ $editor-light-color: lightgray;
       position: absolute;
       right: 1em;
       bottom: 1em;
+
+      &.danger {
+        color: red;
+      }
     }
   }
 }
