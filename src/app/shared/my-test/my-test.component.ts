@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-my-test',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyTestComponent implements OnInit {
 
-  constructor() { }
+  isAdvanced$: Observable<boolean>;
+
+  _isAdvanced$ = new BehaviorSubject<boolean>(true);
+
+  constructor() {
+    this.isAdvanced$ = this._isAdvanced$.asObservable();
+  }
 
   ngOnInit() {
   }

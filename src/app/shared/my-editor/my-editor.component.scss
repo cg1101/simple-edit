@@ -1,3 +1,5 @@
+@import '~op2-living-style-guides/assets/variables';
+
 $editor-border: lightgray thin solid;
 $editor-border-radius: 4px;
 $editor-header-language-picker-flex: 0 0 10em;
@@ -8,11 +10,26 @@ $editor-light-color: lightgray;
 
 :host {
   display: block;
-  border: $editor-border;
-  border-radius: $editor-border-radius;
 
   .header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: flex-end;
 
+    > * {
+      flex: 0 0 5em;
+      background-color: $c-white;
+      padding: 0.5em;
+      border: $editor-border;
+      text-align: center;
+    }
+  }
+
+  .main {
+    border: $editor-border;
+    border-radius: $editor-border-radius;
+    background-color: $c-white;
   }
 
   .toolbar {
@@ -32,6 +49,9 @@ $editor-light-color: lightgray;
 
     .language-picker {
       flex: $editor-header-language-picker-flex;
+      i.op2-* {
+        float: right;
+      }
     }
 
     .attribute-picker {

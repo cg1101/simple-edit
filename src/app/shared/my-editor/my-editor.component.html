@@ -1,12 +1,22 @@
-<div class="toolbar">
-  <span class="language-picker">{{language$ | async}}<i class="op2-icon-down"></i></span>
-  <span class="attribute-picker"><i class="op2-icon-down"></i></span>
-  <a class="clear-all" (click)="clear()">Clear All Text</a>
+<div class="header" *ngIf="advancedMode">
+  <span>Text</span>
+  <span>HTML</span>
 </div>
-<div class="body">
-  <div class="editor" #editor appSimpleEdit (change)="dataChanged($event)"></div>
-  <span class="placeholder">{{placeholderText}}</span>
-  <div class="counter" [ngClass]="(characterCount$ | async) > maxLength ? 'danger' : ''">
-    {{characterCount$ | async}} / {{maxLength}}
+<div class="main">
+  <div class="toolbar">
+    <div class="dropdown language-picker">
+      <span class="">{{language$ | async}}<i class="op2-icon-down"></i></span>
+    </div>
+    <div class="dropdown attribute-picker">
+      <span class=""><i class="op2-icon-down"></i></span>
+    </div>
+    <a class="clear-all" (click)="clear()">Clear All Text</a>
+  </div>
+  <div class="body">
+    <div class="editor" #editor appSimpleEdit (change)="dataChanged($event)"></div>
+    <span class="placeholder">{{placeholderText}}</span>
+    <div class="counter" [ngClass]="(characterCount$ | async) > maxLength ? 'danger' : ''">
+      {{characterCount$ | async}} / {{maxLength}}
+    </div>
   </div>
 </div>

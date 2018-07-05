@@ -1,5 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+$icomoon-font-path: '~op2-living-style-guides/assets/font-icons/fonts' !default;
+
 @import '~op2-living-style-guides/assets/variables';
+@import '~op2-living-style-guides/assets/icons';
+@import '~op2-living-style-guides/assets/typography';
+@import '~op2-living-style-guides/assets/buttons';
+@import '~op2-living-style-guides/assets/dropdown';
+@import '~op2-living-style-guides/assets/forms';
+@import '~op2-living-style-guides/assets/layout';
+@import '~op2-living-style-guides/assets/table';
+@import '~op2-living-style-guides/assets/general';
+@import '~op2-living-style-guides/assets/section-headers';
+
+body {
+  padding: 40px;
+}
 
 * {
   box-sizing: border-box;

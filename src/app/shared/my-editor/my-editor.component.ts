@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EditData } from '../simple-edit.directive';
@@ -9,6 +9,9 @@ import { EditData } from '../simple-edit.directive';
   styleUrls: ['my-editor.component.scss']
 })
 export class MyEditorComponent implements OnInit {
+
+  @Input()
+  advancedMode: boolean;
 
   readonly maxLength = 140;
   readonly placeholderText = 'Enter ad copy here...';

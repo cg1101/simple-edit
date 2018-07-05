@@ -2,8 +2,8 @@ import { Directive, OnInit, ElementRef, Renderer2, HostListener, EventEmitter, O
 
 export interface EditData {
   html: string;
-  text: string;
-  count: number;
+  readonly text: string;
+  readonly count: number;
 }
 
 @Directive({
