@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { EditData } from '../simple-edit.directive';
+import { defaultData } from '../simple-editor/simple-editor.component';
 
 @Component({
   selector: 'app-my-test',
@@ -12,6 +14,15 @@ export class MyTestComponent implements OnInit {
 
   _isAdvanced$ = new BehaviorSubject<boolean>(true);
 
+  _editData: EditData = defaultData;
+  editData$: Observable<EditData>;
+  _editData$ = new BehaviorSubject<EditData>(this._editData);
+
+  @Input()
+  set data(newData: EditData) {
+    this._editData$.next(this._editData = newData);
+  }
+  
   constructor() {
     this.isAdvanced$ = this._isAdvanced$.asObservable();
   }

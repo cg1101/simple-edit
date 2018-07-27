@@ -6,6 +6,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { MyTestComponent } from './my-test/my-test.component';
 import { MyEditorComponent } from './my-editor/my-editor.component';
 import { SimpleEditDirective } from './simple-edit.directive';
+import { SimpleEditorComponent } from './simple-editor/simple-editor.component';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { SimpleEditDirective } from './simple-edit.directive';
     MyTestComponent,
     MyEditorComponent,
     SimpleEditDirective,
+    SimpleEditorComponent,
   ],
   exports: [
     FormsModule,

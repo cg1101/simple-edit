@@ -2,12 +2,25 @@
   my-test works!
 </p>
 
+<div>
+  <svg width="160" height="160" viewBox="0 0 640 640">
+    <g transform="translate(64, 64)">
+      <path fill="currentColor" fill-rule="evenodd" stroke="white" d="M32 480
+	 V224h96v256H32zm424.017-203.648C472 288 472 336 450.41 347.017c13.522 22.76 1.352 53.216-15.015 61.996 8.293 52.54-18.961 70.606-57.212 70.974-3.312.03-37.247 0-40.727 0-72.929 0-134.742-40.727-177.455-40.727V235.625c37.708 0 72.305-67.939 106.183-101.818 30.545-30.545 20.363-81.454 40.727-101.817 50.909 0 50.909 35.517 50.909 61.091 0 42.189-30.545 61.09-30.545 101.817h111.999c22.73 0 40.627 20.364 40.727 40.727.099 20.363-8.001 36.375-23.984 40.727zM104 432c0 13.255-10.745 24-24 24s-24-10.745-24-24 10.745-24 24-24 24 10.745 24 24zM-64 -64H586 -64 V586 586 H-64 586 V-64 -64z"></path>
+    </g>
+  </svg>
+</div>
 
 <hr>
 
-<!--<editor apiKey="test" [init]="{plugins: 'link'}"></editor>-->
+<editor apiKey="test" [init]="{plugins: 'link'}"></editor>
 
 <hr>
 
 isAdvanced$: {{isAdvanced$ | async}}
-<app-my-editor [enableAdvancedMode]="isAdvanced$ | async"></app-my-editor>
+<app-my-editor [enableAdvancedMode]="isAdvanced$ | async"
+></app-my-editor>
+
+<hr>
+
+<app-simple-editor></app-simple-editor>

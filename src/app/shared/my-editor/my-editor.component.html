@@ -17,7 +17,7 @@
       <div class="wrapper">
         <div class="editor" #editor appSimpleEdit (change)="dataChanged($event)"></div>
       </div>
-      <span class="placeholder">{{placeholderText}}</span>
+      <span *ngIf="(characterCount$ | async) == 0" class="placeholder">{{placeholderText}}</span>
       <div class="counter" [ngClass]="(characterCount$ | async) > maxLength ? 'danger' : ''">
         {{characterCount$ | async}} / {{maxLength}}
       </div>
@@ -25,7 +25,7 @@
   </div>
   <div class="main-a" *ngIf="advancedMode">
       <pre contenteditable="true">
-{{(_editData$| async).html}}
+        {{(_editData$| async).html}}
       </pre>
   </div>
 </div>
